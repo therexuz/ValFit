@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{message}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <!-- Itera sobre el arreglo de clientes -->
+    <ion-card *ngFor="let cliente of clientes">
+      <ion-card-header>
+        <!-- Muestra la foto del cliente -->
+        <ion-img [src]="cliente.foto"></ion-img>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Muestra el nombre y la edad del cliente -->
+        <ion-card-title>{{cliente.nombre}}</ion-card-title>
+        <ion-card-subtitle>{{cliente.edad}} años</ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="open-modal">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img [src]="photo" (click)="loadPhoto()">
+          </ion-avatar>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input type="text" placeholder="Tu nombre" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Edad</ion-label>
+          <ion-input type="number" placeholder="Tu edad" [(ngModel)]="age"></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
