@@ -1,0 +1,7 @@
+{
+  "name": "ValFit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
