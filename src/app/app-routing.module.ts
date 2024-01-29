@@ -9,15 +9,15 @@ const routes: Routes = [
  
   {
     path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
     path: 'clientes',
-    loadChildren: () => import('./clientes/clientes.module').then( m => m.ClientesPageModule)
+    loadChildren: () => import('./pages/clientes/clientes.module').then( m => m.ClientesPageModule)
   },
   {
     path: 'reportes',
-    loadChildren: () => import('./reportes/reportes.module').then( m => m.ReportesPageModule)
+    loadChildren: () => import('./pages/reportes/reportes.module').then( m => m.ReportesPageModule)
   },
  
 ];
